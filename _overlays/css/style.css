@@ -124,6 +124,29 @@ body {
     animation-name: p2score;
     animation-duration: 0.26s; }
 
+    /* Commentary CSS */
+#commentary {
+  position: absolute;
+  top: 75%;
+  width: 1910px;
+  height: 200px;
+  border: solid 5px red;
+}
+#leftCommentary {
+  position: absolute;
+  width: 25%;
+  height: 190px;
+  border: solid 5px blue;
+}
+#rightCommentary {
+  position: absolute;
+  width: 25%;
+  height: 190px;
+  right: 0;
+  border: solid 5px fuchsia;
+}
+
+
 /* Animation CSS */
 @keyframes slidedown {
   from {

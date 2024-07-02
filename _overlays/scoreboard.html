@@ -48,6 +48,21 @@
 
 		<div id="gameHold"></div> <!-- div to remain hidden to act as a placeholder for 'game' value -->
 
+		<div id="commentary">
+			<div id="leftCommentary">
+				<span id="leftCommentaryWrapper" class="wrappers">
+					<span id="leftCommentatorName" class="commentator"><h2>hi</h2></span>
+					<span id="leftCommentatorHandle" class="commentator"></span> <!-- team/name spans nested within wrapper span to allow them to align the same without overlapping each other -->
+				</span>
+			</div>
+			<div id="rightCommentary">
+				<span id="rightCommentaryWrapper" class="wrappers">
+					<span id="rightCommentatorName" class="commentator"></span>
+					<span id="rightCommentatorHandle" class="commentator"></span>
+				</span>			
+			</div>
+		</div> <!-- div to remain hidden to act as a placeholder for 'game' value -->
+
 		<script type="text/javascript">
 			var nameSize = '30px'; //default font size of name wrappers, should match 'font-size' value of .wrappers
 			var rdSize = '22px'; //default font size of round container, should match 'font-size' value of #round
