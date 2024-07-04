@@ -170,6 +170,19 @@ function init(){
 				}});
 			}
 
+			// CHANGES P1 NAME FONT SIZE IF $(p1Name).length >9
+			if($(p1Name).length > 9){
+				$('#p1Name').css({
+					'font-size': '10px'
+				});
+			}
+			// CHANGES P2 NAME FONT SIZE IF $(p2Name).length >9
+			if($(p2Name).length > 9){
+				$('#p2Name').css({
+					'font-size': '10px'
+				});
+			}
+
 			if($('#round').text() != round){
 				TweenMax.to('#round',.3,{css:{opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //same format as changing names just no change in positioning, only fade in/out
 					$('#round').css('font-size',rdSize);
