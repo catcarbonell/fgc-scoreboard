@@ -125,26 +125,31 @@ body {
     animation-duration: 0.26s; }
 
     /* Commentary CSS */
-#commentary {
-  position: absolute;
-  top: 75%;
-  width: 1910px;
-  height: 200px;
-  border: solid 5px red;
-}
-#leftCommentary {
-  position: absolute;
-  width: 25%;
-  height: 190px;
-  border: solid 5px blue;
-}
-#rightCommentary {
-  position: absolute;
-  width: 25%;
-  height: 190px;
-  right: 0;
-  border: solid 5px fuchsia;
-}
+    #commentary {
+      position: absolute;
+      top: 75%;
+      width: 1920px;
+      height: 200px;
+      border: solid 5px red;
+      display: flex;
+      justify-content: space-between; /* Distributes space evenly between items */
+    }
+    
+    #leftCommentary, #middle, #rightCommentary {
+      width: 25%;
+      height: 190px;
+      border: solid 5px blue; /* Default color, override below */
+    }
+    
+    #middle {
+      height: 190px;
+      border: 5px solid green;
+    }
+    
+    #rightCommentary {
+      border: solid 5px fuchsia;
+      text-align: right;
+    }
 
 
 /* Animation CSS */
