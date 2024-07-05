@@ -6,49 +6,27 @@
 		<script src="js/greensock-js/src/minified/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
-		<div id="scoreboardBG">
-			<div id="roundBG" class="round-animation"></div>
-			<div id="leftBGWrapper" class="BGWrapper">
-				<div id="p1ScoreBG" class="scoreBG p1s-animation"></div>
-				<div id="p1PlayerBG" class="playerBG player1-animation"></div>
-			</div>
-			<div id="rightBGWrapper" class="BGWrapper">
-				<div id="p2ScoreBG" class="scoreBG p2s-animation"></div>
-				<div id="p2PlayerBG" class="playerBG player2-animation"></div>
-			</div>
-		</div>
-
-		<div id="scoreboard">
-			<div id="leftWrapper">
-				<span id="p1Score" class="scores"></span>
-				<span id="p1Wrapper" class="wrappers">
-					<span id="p1Team" class="teams"></span> <!-- team/name spans nested within wrapper span to allow them to align the same without overlapping each other -->
-					<span id="p1Name" class="names"></span>
-				</span>
-			</div>
-			<div id="rightWrapper">
-				<span id="p2Score" class="scores"></span>
-				<span id="p2Wrapper" class="wrappers">
-					<span id="p2Team" class="teams"></span>
-					<span id="p2Name" class="names"></span>
-				</span>
-			</div>
-			<div id="rdWrapper">
-				<span id="round"></span>
-			</div>
-		</div>
-
-
-		<div id="logoWrapper">
-			<img id="logo1" class="logos" src="imgs/reddit-tour.png"></img>
-			<!-- <img id="logo2" class="logos" src="imgs/logo2.png"></img>
-			<img id="logo3" class="logos" src="imgs/logo3.png"></img> -->
-		</div>
-
-
-		<div id="gameHold"></div> <!-- div to remain hidden to act as a placeholder for 'game' value -->
-
 	
+		<div id="commentary">
+			<div id="leftCommentary">
+				<span id="leftCommentaryWrapper">
+					<span id="leftCommentatorName" class="commentator"></span>
+					<span id="leftCommentatorHandle" class="commentator"></span> <!-- team/name spans nested within wrapper span to allow them to align the same without overlapping each other -->
+				</span>
+			</div>
+			<div id="middle">
+				<span id="middleWrapper" class="wrappers">
+					<span id="middleContent"></span>
+				</span>
+			</div>
+			<div id="rightCommentary">
+				<span id="rightCommentaryWrapper" class="wrappers">
+					<span id="rightCommentatorName" class="commentator">dsfsdfs</span>
+					<span id="rightCommentatorHandle" class="commentator"></span>
+				</span>			
+			</div>
+		</div> 
+		
 		<script type="text/javascript">
 			var nameSize = '30px'; //default font size of name wrappers, should match 'font-size' value of .wrappers
 			var rdSize = '22px'; //default font size of round container, should match 'font-size' value of #round

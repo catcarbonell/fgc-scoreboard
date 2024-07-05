@@ -140,6 +140,11 @@ body {
       border: solid 5px blue; /* Default color, override below */
     }
     /* Left Commentary */
+    
+    body #leftCommentaryWrapper {
+      left: 456px;
+      top: 500px;
+    }
     #leftCommentatorName {
       color: blue;
       font-size: 16px;
@@ -157,6 +162,11 @@ body {
     }
     
     /* Right Commentary */
+    
+    body #rightCommentaryWrapper {
+      left: 1116px; 
+      top: 500px;
+    }
     #rightCommentary {
       border: solid 5px fuchsia;
       text-align: right;

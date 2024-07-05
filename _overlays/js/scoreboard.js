@@ -113,6 +113,8 @@ function init(){
 			$('#round').html(round);
 			$('#leftCommentatorName').html(cTitle1);
 			$('#rightCommentatorName').html(cTitle2);
+			$('#leftCommentatorHandle').html(mText1);
+			$('#rightCommentatorHandle').html(mText2);
 
 			p1Wrap.each(function(i, p1Wrap){ //function to resize font if text string is too long and causes div to overflow its width/height boundaries
 				while(p1Wrap.scrollWidth > p1Wrap.offsetWidth || p1Wrap.scrollHeight > p1Wrap.offsetHeight){
@@ -271,34 +273,27 @@ function init(){
 
 // COMMENTARY (Lower 3rd)
 	// Text for LEFT SIDE commentator
-	if($('#leftCommentatorName').text() != cTitle1){ 
-		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
-			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
-			$('#leftCommentatorName').html(cTitle1); //updates name and team html objects with current json values
-			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
-		}});
-	}
-	if($('#leftCommentatorHandle').text() != mText1){ 
-		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
-			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
-			$('#leftCommentatorHandle').html(mText1); //updates name and team html objects with current json values
-			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
-		}});
-	}
+
+	if($('#leftCommentatorName').text() != cTitle1 || $('#leftCommentatorHandle').text() != mText1){
+		$('#leftCommentatorName').html(cTitle1);
+		$('#leftCommentatorHandle').html(mText1);
+	};
+
 
 	// Text for RIGHT SIDE commentator
-	if($('#rightCommentatorName').text() != cTitle1){ 
-		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
-			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
+	if($('#rightCommentatorName').text() != cTitle2){ 
+		TweenMax.to('#rightCommentaryWrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
+			$('#rightCommentaryWrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
 			$('#rightCommentatorName').html(cTitle1); //updates name and team html objects with current json values
-			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
+			TweenMax.to('#rightCommentaryWrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
 		}});
 	}
 	if($('#rightCommentatorHandle').text() != mText2){ 
-		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
-			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
+		
+		TweenMax.to('#rightCommentaryWrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
+			$('#rightCommentaryWrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
 			$('#rightCommentatorHandle').html(mText2); //updates name and team html objects with current json values
-			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
+			TweenMax.to('#rightCommentaryWrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
 		}});
 	}
 
