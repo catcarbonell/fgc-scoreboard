@@ -139,26 +139,39 @@ body {
       width: 25%;
       border: solid 5px blue; /* Default color, override below */
     }
-    
-    #middle {
-      border: solid 5px green;
-    }
-    
-    #rightCommentary {
-      border: solid 5px fuchsia;
-      text-align: right;
-    }
-
+    /* Left Commentary */
     #leftCommentatorName {
       color: blue;
-      font-size: 1.5em;
+      font-size: 16px;
       font-weight: 700;
     }
     #leftCommentatorHandle {
       color: blue;
-      font-size: 0.8em;
+      font-size: 12px;
       font-weight: 300;
     }
+    
+    /* Middle Commentary */
+    #middle {
+      border: solid 5px green;
+    }
+    
+    /* Right Commentary */
+    #rightCommentary {
+      border: solid 5px fuchsia;
+      text-align: right;
+    }
+    #rightCommentatorName {
+      color: fuchsia;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    #rightCommentatorHandle {
+      color: fuchsia;
+      font-size: 12px;
+      font-weight: 300;
+    }
+
 
 /* Animation CSS */
 @keyframes slidedown {

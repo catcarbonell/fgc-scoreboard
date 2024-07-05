@@ -94,6 +94,9 @@ function init(){
 		var round = scObj['round'];
 		var cTitle1 = scObj['cTitle1'];
 		var cTitle2 = scObj['cTitle2'];
+		var mText1  = scObj['mText1'];
+		var mText2  = scObj['mText2'];
+		
 
 		if(startup == true){
 
@@ -266,14 +269,35 @@ function init(){
 		}
 	}
 
-// Commentary (Lower 3rd)
+// COMMENTARY (Lower 3rd)
 	// Text for LEFT SIDE commentator
 	if($('#leftCommentatorName').text() != cTitle1){ 
 		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
 			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
 			$('#leftCommentatorName').html(cTitle1); //updates name and team html objects with current json values
+			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
+		}});
+	}
+	if($('#leftCommentatorHandle').text() != mText1){ 
+		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
+			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
+			$('#leftCommentatorHandle').html(mText1); //updates name and team html objects with current json values
+			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
+		}});
+	}
 
-
+	// Text for RIGHT SIDE commentator
+	if($('#rightCommentatorName').text() != cTitle1){ 
+		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
+			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
+			$('#rightCommentatorName').html(cTitle1); //updates name and team html objects with current json values
+			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
+		}});
+	}
+	if($('#rightCommentatorHandle').text() != mText2){ 
+		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
+			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
+			$('#rightCommentatorHandle').html(mText2); //updates name and team html objects with current json values
 			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
 		}});
 	}
