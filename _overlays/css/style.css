@@ -137,13 +137,11 @@ body {
     
     #leftCommentary, #middle, #rightCommentary {
       width: 25%;
-      height: 190px;
       border: solid 5px blue; /* Default color, override below */
     }
     
     #middle {
-      height: 190px;
-      border: 5px solid green;
+      border: solid 5px green;
     }
     
     #rightCommentary {
@@ -151,6 +149,16 @@ body {
       text-align: right;
     }
 
+    #leftCommentatorName {
+      color: blue;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+    #leftCommentatorHandle {
+      color: blue;
+      font-size: 0.8em;
+      font-weight: 300;
+    }
 
 /* Animation CSS */
 @keyframes slidedown {

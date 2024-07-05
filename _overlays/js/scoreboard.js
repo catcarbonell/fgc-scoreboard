@@ -92,6 +92,8 @@ function init(){
 		var p1Score = scObj['p1Score'];
 		var p2Score = scObj['p2Score'];
 		var round = scObj['round'];
+		var cTitle1 = scObj['cTitle1'];
+		var cTitle2 = scObj['cTitle2'];
 
 		if(startup == true){
 
@@ -106,6 +108,8 @@ function init(){
 			$('#p1Score').html(p1Score);
 			$('#p2Score').html(p2Score);
 			$('#round').html(round);
+			$('#leftCommentatorName').html(cTitle1);
+			$('#rightCommentatorName').html(cTitle2);
 
 			p1Wrap.each(function(i, p1Wrap){ //function to resize font if text string is too long and causes div to overflow its width/height boundaries
 				while(p1Wrap.scrollWidth > p1Wrap.offsetWidth || p1Wrap.scrollHeight > p1Wrap.offsetHeight){
@@ -262,6 +266,20 @@ function init(){
 		}
 	}
 
+// Commentary (Lower 3rd)
+	// Text for LEFT SIDE commentator
+	if($('#leftCommentatorName').text() != cTitle1){ 
+		TweenMax.to('#p1Wrapper',.3,{css:{x: p1Move, opacity: 0},ease:Quad.easeOut,delay:0,onComplete:function(){ //uses onComplete parameter to execute function after TweenMax
+			$('#p1Wrapper').css('font-size',nameSize); //restores default font size based on variable set in scoreboard.html
+			$('#leftCommentatorName').html(cTitle1); //updates name and team html objects with current json values
+
+
+			TweenMax.to('#p1Wrapper',.3,{css:{x: '+0px', opacity: 1},ease:Quad.easeOut,delay:.2}); //fades name wrapper back in while moving to original position
+		}});
+	}
+
+			
+// Animations
 	function playCSSAnimations(){
 		roundBG = document.getElementById("roundBG");
 		roundBG.classList.remove("round-animation");
