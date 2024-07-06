@@ -1,0 +1,127 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		
+<style text="text/CSS">
+
+	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+	body {
+		width: 1920px;
+		height: 1080px;
+		overflow: hidden;
+		background: transparent;
+		padding: 0px;
+		margin: 0px;
+		text-transform: uppercase;
+		color: white;
+		text-shadow: 3px 3px 4px DimGray;
+		font-family: "Bebas Neue", sans-serif;
+		}
+	
+	/* Commentary CSS */
+	#commentary {
+		position: absolute;
+		left: 250px; 
+		top: 950px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between; /* Distributes space evenly between items */
+		z-index: 100;
+		color: #fff;
+		text-align: left;
+	}
+	
+	#commentatorName {
+		color: #fff;
+		font-size: 25px;
+		font-weight: 700;
+	}
+	
+	#commentatorHandle {
+		color: #fff;
+		font-size: 15px;
+		font-weight: 300;
+		line-height: 50%;
+	}
+
+	#lowerThirdBg {
+		position: absolute;
+		display: block;
+		left: 35px;
+		top: 900px;
+	}
+	
+</style>
+
+	</head>
+	<body>
+		<div id="lowerThirdBg">
+			<video id="lowerThirdVid" class="LT" type="video/webm" width="975" height="149"></video>
+		</div>
+		<div id="commentary">
+			<span id="commentaryWrapper">
+				<span id="commentatorName" class="text"></span>
+				<br />
+				<span id="commentatorHandle" class="text"></span> <!-- team/name spans nested within wrapper span to allow them to align the same without overlapping each other -->
+			</span>
+		</div>
+
+		
+		<script type="text/javascript">
+			var streamJSON = '../sc/streamcontrol.json'; // Specifies path for streamcontrol output JSON
+			var xhttp = new XMLHttpRequest(); // AJAX data request sent to server (in this case server being local JSON file)
+			var fresh = true; // Flag for if looping functions are on their first pass or not
+			var scValues; // Stream control values
+			var comNamesWrap = $('#text');
+
+			xhttp.overrideMimeType('application/json'); // Explicitly declares that JSON should always be processed as a JSON file type
+			xhttp.onreadystatechange = parseJSON; // Runs parseJSON function every time XMLHttpRequest ready state changes
+			
+			lowerThirdVid();
+			scUpdate();
+			setInterval(function() { scUpdate(); }, 500);
+			
+			function scUpdate() {
+				xhttp.open('GET', streamJSON, true); // String query-style cache busting, forces non-cached new version of JSON to be opened each time
+				xhttp.send();
+			}
+
+			function parseJSON() {
+				if (xhttp.readyState === 4 && xhttp.status === 200) { // Loads data from JSON into scValues variable each time that XMLHttpRequest ready state reports back as '4' (successful)
+					scValues = JSON.parse(xhttp.responseText);
+					setTimeout(getText, 500);
+				}
+			}
+
+			function lowerThirdVid(){
+				$('#lowerThirdVid').attr('src','../webm/lowerthird.webm');
+				document.getElementById('lowerThirdVid').play()
+			}
+
+			function getText() {
+				var commentatorName = scValues["cTitle1"];
+				var commentatorHandle = scValues["mText1"];
+				
+				if ($("#commentatorName").text() != commentatorName || $("#commentatorHandle").text() != commentatorHandle) {
+					if (fresh) {
+						$("#commentatorName").html(commentatorName);
+						$("#commentatorHandle").html(commentatorHandle);
+						$(".text").transition({opacity: '1'}, 1000);
+						resize();
+						fresh = false;
+					} else {
+						$(".text").transition({opacity: '0'}, 1000, function() {
+							$("#commentatorName").html(commentatorName);
+							$("#commentatorHandle").html(commentatorHandle);
+							$(".text").transition({opacity: '1'}, 1000);
+							resize();
+						});
+					}
+				}
+			}
+		</script>
+	</body>
+
+</html>
