@@ -30,7 +30,7 @@ function init(){
 		if(xhr.readyState === 4){ //loads data from json into scObj variable each time that XMLHttpRequest ready state reports back as '4'(successful)
 			scObj = JSON.parse(xhr.responseText);
 			if(animated == true){
-				updateCommentary();
+				// updateCommentary();
 				scoreboard(); //runs scoreboard function each time readyState reports back as 4 as long as it has already run once and changed animated value to false
 			}
 		}

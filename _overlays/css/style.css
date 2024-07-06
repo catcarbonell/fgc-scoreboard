@@ -104,7 +104,7 @@ body {
     filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.6)); }
   body .scoreBG {
     background-color: #c40a18;
-    outline: 1px solid black;
+    border: 1px solid #fff;
     width: 49px;
     height: calc(100% - 4px);
     position: absolute;
