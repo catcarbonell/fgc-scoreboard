@@ -15,36 +15,44 @@ body {
   body .scoreboard {
     position: absolute;
     left: 0px;
-    top: 0px; }
+    top: 0px;
+    z-index: 100;
+  }
+  body .scoreboardBG {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+  }
   body .wrappers {
     position: absolute;
     width: 348px;
     height: 45px;
     line-height: 45px;
     text-align: center;
-    top: 32px;
+    top: 36px;
     font-size: 30px;
     opacity: 0; }
     body .wrappers .teams {
       color: #e5e5e5; }
   body #p1Wrapper {
-    left: 456px; }
+    left: 350px; }
   body #p2Wrapper {
-    left: 1116px; }
+    left: 1200px; }
   body .scores {
     position: absolute;
     width: 41px;
     height: 41px;
     line-height: 41px;
     text-align: center;
-    top: 34px;
+    top: 38px;
     -webkit-text-stroke: 1px black;
     font-size: 34px;
     opacity: 0; }
   body #p1Score {
-    left: 395px; }
+    left: 260px; }
   body #p2Score {
-    left: 1485px; }
+    left: 1600px; }
   body #round {
     position: absolute;
     width: 210px;

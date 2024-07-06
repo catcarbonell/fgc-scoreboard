@@ -37,43 +37,50 @@ function init(){
 	}
 
 	// Run Commentary Vid bg
-	comVid();
+	sbVid();
+	// comVid();
 
-	// Commentary
-
-	function comVid(){
-		$('#comVid').attr('src','../webm/middlelogo.webm');
-		document.getElementById('comVid').play()
+	// REG Scoreboard
+	function sbVid(){
+		$('#sbVid').attr('src','../webm/scoreboard.webm');
+		document.getElementById('sbVid').play()
 	}
 
-	function updateCommentary() {
-		var leftCommentatorName = scObj.cTitle1; // replace with the actual key from your JSON
-		var leftCommentatorHandle = scObj.mText1; // replace with the actual key from your JSON
-		var rightCommentatorName = scObj.cTitle2; // replace with the actual key from your JSON
-		var rightCommentatorHandle = scObj.mText2; // replace with the actual key from your JSON
+	// // Commentary
+
+	// function comVid(){
+	// 	$('#comVid').attr('src','../webm/middlelogo.webm');
+	// 	document.getElementById('comVid').play()
+	// }
+
+	// function updateCommentary() {
+	// 	var leftCommentatorName = scObj.cTitle1; // replace with the actual key from your JSON
+	// 	var leftCommentatorHandle = scObj.mText1; // replace with the actual key from your JSON
+	// 	var rightCommentatorName = scObj.cTitle2; // replace with the actual key from your JSON
+	// 	var rightCommentatorHandle = scObj.mText2; // replace with the actual key from your JSON
 	
-		// Text for LEFT SIDE commentator
-		if ($('#leftCommentatorName').text() != leftCommentatorName || $('#leftCommentatorHandle').text() != leftCommentatorHandle 
-		|| $('#rightCommentatorName').text() != rightCommentatorName || $('#rightCommentatorHandle').text() != rightCommentatorHandle) {
-			if (startup == true) {
-				$("#leftCommentatorName").html(leftCommentatorName);
-				$("#leftCommentatorHandle").html(leftCommentatorHandle);
-				$("#rightCommentatorName").html(rightCommentatorName);
-				$("#rightCommentatorHandle").html(rightCommentatorHandle);
-				$(".text").transition({opacity: '1'}, 1000);
-				resize();
-			} else {
-				$(".text").transition({opacity: '0'}, 1000, function() {
-					$("#leftCommentatorname").html(leftCommentatorName);
-					$("#leftCommentatorHandle").html(leftCommentatorHandle);
-					$("#rightCommentatorName").html(rightCommentatorName);
-					$("#rightCommentatorHandle").html(rightCommentatorHandle);
-					$(".text").transition({opacity: '1'}, 1000);
-					resize();
-				});
-			}
-		}
-	}
+	// 	// Text for LEFT SIDE commentator
+	// 	if ($('#leftCommentatorName').text() != leftCommentatorName || $('#leftCommentatorHandle').text() != leftCommentatorHandle 
+	// 	|| $('#rightCommentatorName').text() != rightCommentatorName || $('#rightCommentatorHandle').text() != rightCommentatorHandle) {
+	// 		if (startup == true) {
+	// 			$("#leftCommentatorName").html(leftCommentatorName);
+	// 			$("#leftCommentatorHandle").html(leftCommentatorHandle);
+	// 			$("#rightCommentatorName").html(rightCommentatorName);
+	// 			$("#rightCommentatorHandle").html(rightCommentatorHandle);
+	// 			$(".text").transition({opacity: '1'}, 1000);
+	// 			resize();
+	// 		} else {
+	// 			$(".text").transition({opacity: '0'}, 1000, function() {
+	// 				$("#leftCommentatorname").html(leftCommentatorName);
+	// 				$("#leftCommentatorHandle").html(leftCommentatorHandle);
+	// 				$("#rightCommentatorName").html(rightCommentatorName);
+	// 				$("#rightCommentatorHandle").html(rightCommentatorHandle);
+	// 				$(".text").transition({opacity: '1'}, 1000);
+	// 				resize();
+	// 			});
+	// 		}
+	// 	}
+	// }
 	// Scoreboard
 	function scoreboard(){
 
