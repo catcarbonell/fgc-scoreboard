@@ -37,7 +37,7 @@ body {
     body .wrappers .teams {
       color: #e5e5e5; }
   body #p1Wrapper {
-    left: 350px; }
+    left: 320px; }
   body #p2Wrapper {
     left: 1200px; }
   body .scores {
@@ -58,7 +58,7 @@ body {
     position: absolute;
     width: 210px;
     height: 36px;
-    left: 856px;
+    left: 850px;
     line-height: 36px;
     text-align: center;
     font-size: 22px;
