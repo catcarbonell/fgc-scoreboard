@@ -1,0 +1,164 @@
+<html>
+
+<head>
+
+	<script src="../js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jquery.transit.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/greensock-js/src/minified/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/xjs.js" type="text/javascript" charset="utf-8"></script>
+	
+
+<style>
+	
+	@font-face {
+		src: url('../fonts/HKNova-ExtraBold.ttf');
+		font-family: "HKNova-ExtraBold";
+	}
+	
+	@font-face {
+		src: url('../fonts/HKNova-Regular.ttf');
+		font-family: "HKNova-Regular";
+	}	
+	
+	body {
+		width: 1920;
+		height: 1080;
+		font-family: "HKNova-ExtraBold";
+		color: white;
+		text-transform: uppercase;
+		overflow: hidden;
+		padding: 0px;
+		margin: 0px;
+		text-shadow: 2px 2px 3px DimGray;
+	}
+
+	#textCont{
+		position: absolute;
+		width: 700px;
+		height: 434px;
+		left: 1160px;
+		top: 400px;
+	}
+	
+	#text {
+		position: absolute;
+		display: block;
+		font-size: 68px;
+		line-height: 85px;
+		opacity: .1;
+	}
+	
+	#timer {
+		position: absolute;
+		display: none;
+		font-size: 180px;
+		line-height: 200px;
+		top: 80px;
+		left: -10px;
+	}
+
+</style>
+
+</head>
+	
+
+<body>
+
+	<div id="textCont">
+		<span id="text">Hello World</span>
+		<span id="timer">00:00</span>
+	</div>
+
+<script>
+
+	var streamJSON = '../sc/streamcontrol.json'; //specifies path for streamcontrol output json
+	var xhttp = new XMLHttpRequest(); //AJAX data request sent to server(in this case server being local json file)
+	var fresh = true; //flag for if looping functions are on their first pass or not
+	var scValues; //stream control values
+	var timerTarget; //the point in time the timer is counting down towards
+	
+	xhttp.overrideMimeType('application/json'); //explicitly declares that json should always be processed as a json filetype	
+	xhttp.onreadystatechange = parseJSON; //runs parseJSON function every time XMLHttpRequest ready state changes
+	
+	scUpdate();
+	setInterval(function() {scUpdate();}, 500); //runs polling function twice per second
+	
+	function scUpdate() {
+		xhttp.open('GET',streamJSON, true); //string query-style cache busting, forces non-cached new version of json to be opened each time
+		xhttp.send();		
+	}
+
+	function parseJSON() {
+		if(xhttp.readyState === 4){ //loads data from json into scValues variable each time that XMLHttpRequest ready state reports back as '4'(successful)
+			scValues = JSON.parse(xhttp.responseText);
+			downtime(); //runs scoreboard function each time readyState reports back as 4 as long as it has already run once and changed animated value to false
+		}
+	}
+	
+	function downtime() {
+		getText();
+		timerCheck();
+		getTarget();
+		getTimer();
+	}
+	
+	function getTarget() {
+		timerLength = scValues["timerLength"];
+		timerStart = scValues["timerStart"];
+		
+		var timeArray = timerLength.split(":");
+		timerTarget = new Date((timerStart * 1000) + (timeArray[0] * 60000) + (timeArray[1] * 1000) + 1200);
+	}
+	
+	function getTimer(){
+		var current = new Date();
+		var remainder = timerTarget - current;
+		if (remainder <= 0){
+			$("#timer").html("SOON!");
+		}else{
+			$("#timer").html(getCountdown(remainder));
+		}
+	}
+	
+	function getCountdown(x){
+		var minutes = Math.floor(x / (60 * 1000) % 60);
+		var seconds = "0" + Math.floor(x / 1000 % 60);
+		var countdown = minutes + ':' + seconds.slice(-2);
+		return countdown;
+	}
+	
+	
+	function getText() {
+		var cdMessage = scValues["cdMessage"];
+		
+		if ($("#text").text() != cdMessage){
+			if (fresh == true){
+				$("#text").html(cdMessage);
+				$("#text").transition({opacity: '1'}, 1000);
+				fresh = false;
+		}
+			else{
+				$("#text").transition({opacity: '0'}, 1000, function(){
+					$("#text").html(cdMessage);
+					$("#text").transition({opacity: '1'}, 1000);
+				});
+			}
+		}
+	}
+
+	function timerCheck() {
+		var showTimer = scValues["showTimer"]
+		if (showTimer == 1){
+			$("#timer").fadeIn(1000);
+			$("#timer").html(timerTarget);
+		}else if (showTimer == 0){
+			$("#timer").fadeOut(1000);
+		}
+	}
+
+</script>
+
+
+</body>
+
+
