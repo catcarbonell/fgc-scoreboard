@@ -6,6 +6,8 @@
 <style text="text/CSS">
 
 	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
 
 	body {
 		width: 1920px;
@@ -24,7 +26,7 @@
 	#commentary {
 		position: absolute;
 		left: 220px; 
-  	top: 400px; 
+  	top: 530px; 
 		width: 100%;
 		display: flex;
 		justify-content: space-between; /* Distributes space evenly between items */
@@ -35,27 +37,26 @@
 	
 	#leftCommentary {
 		position: absolute;
-		top: 120px;
-		left: 480px;
+		left: 400px;
 	}
 
 	#rightCommentary {
 		position: absolute;
-		top: 120px;
-		left: 980px;	
+		left: 980px;
 	}
 
 	#leftCommentatorName, #rightCommentatorName {
 		color: #fff;
 		font-size: 30px;
 		font-weight: 700;
+		line-height: 20px;
 	}
 	
 	#leftCommentatorHandle, #rightCommentatorHandle{
 		color: #fff;
+		font-family: "Kode Mono", monospace;
 		font-size: 20px;
 		font-weight: 300;
-		line-height: 50%;
 	}
 
 
@@ -77,11 +78,9 @@
 		<div id="commentary">
 			<!-- Left Commentary-->
 			<div id="leftCommentary">
-				<span id="leftCommentaryWrapper">
-					<span id="leftCommentatorName" class="text"></span>
-					<br />
-					<span id="leftCommentatorHandle" class="text"></span> <!-- team/name spans nested within wrapper span to allow them to align the same without overlapping each other -->
-				</span>
+				<span id="leftCommentatorName" class="text"></span>
+				<br />
+				<span id="leftCommentatorHandle" class="text"></span> <!-- team/name spans nested within wrapper span to allow them to align the same without overlapping each other -->
 			</div>
 
 			<!-- Right Commentary-->
