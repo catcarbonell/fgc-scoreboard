@@ -124,64 +124,6 @@ body {
     animation-name: p2score;
     animation-duration: 0.26s; }
 
-    /* Commentary CSS */
-    #commentary {
-      position: absolute;
-      top: 75%;
-      width: 1920px;
-      height: 200px;
-      border: solid 5px red;
-      display: flex;
-      justify-content: space-between; /* Distributes space evenly between items */
-    }
-    
-    #leftCommentary, #middle, #rightCommentary {
-      width: 25%;
-      border: solid 5px blue; /* Default color, override below */
-    }
-    /* Left Commentary */
-    
-    body #leftCommentaryWrapper {
-      left: 456px;
-      top: 500px;
-    }
-    #leftCommentatorName {
-      color: blue;
-      font-size: 16px;
-      font-weight: 700;
-    }
-    #leftCommentatorHandle {
-      color: blue;
-      font-size: 12px;
-      font-weight: 300;
-    }
-    
-    /* Middle Commentary */
-    #middle {
-      border: solid 5px green;
-    }
-    
-    /* Right Commentary */
-    
-    body #rightCommentaryWrapper {
-      left: 1116px; 
-      top: 500px;
-    }
-    #rightCommentary {
-      border: solid 5px fuchsia;
-      text-align: right;
-    }
-    #rightCommentatorName {
-      color: fuchsia;
-      font-size: 16px;
-      font-weight: 700;
-    }
-    #rightCommentatorHandle {
-      color: fuchsia;
-      font-size: 12px;
-      font-weight: 300;
-    }
-
 
 /* Animation CSS */
 @keyframes slidedown {
