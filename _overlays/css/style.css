@@ -42,7 +42,7 @@ body {
   }
   body #p2Wrapper {
     left: 1250px;
-    text-align: left;
+    text-align: right;
   }
   body .scores {
     position: absolute;
@@ -138,9 +138,6 @@ body {
     animation-name: p2score;
     animation-duration: 0.26s; 
   }
-  #p2Name {
-    margin-left: 70%;
-  }
   
 	#logo{
 		position: absolute;
@@ -187,5 +184,17 @@ body {
   to {
     left: 375px;
     opacity: 1.0; } }
+
+@keyframes slidein {
+  from {
+    translate: 150vw 0;
+    scale: 200% 1;
+  }
+
+  to {
+    translate: 0 0;
+    scale: 100% 1;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
