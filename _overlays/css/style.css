@@ -31,15 +31,19 @@ body {
     height: 45px;
     line-height: 45px;
     text-align: center;
-    top: 36px;
+    top: 35px;
     font-size: 30px;
     opacity: 0; }
     body .wrappers .teams {
       color: #B9FF66; }
   body #p1Wrapper {
-    left: 320px; }
+    left: 300px;
+    text-align: left;
+  }
   body #p2Wrapper {
-    left: 1200px; }
+    left: 1250px;
+    text-align: left;
+  }
   body .scores {
     position: absolute;
     width: 41px;
@@ -132,7 +136,14 @@ body {
     transform: skewX(-20deg); }
   body .p2s-animation {
     animation-name: p2score;
-    animation-duration: 0.26s; }
+    animation-duration: 0.26s; 
+  }
+  #p1Team {
+    margin-right: 70%;
+  }
+  #p2Name {
+    margin-left: 70%;
+  }
   
 	#logo{
 		position: absolute;
