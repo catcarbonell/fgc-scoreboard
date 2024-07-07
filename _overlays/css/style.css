@@ -35,7 +35,7 @@ body {
     font-size: 30px;
     opacity: 0; }
     body .wrappers .teams {
-      color: #e5e5e5; }
+      color: #B9FF66; }
   body #p1Wrapper {
     left: 320px; }
   body #p2Wrapper {
@@ -104,7 +104,7 @@ body {
     filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.6)); }
   body .scoreBG {
     background-color: #c40a18;
-    border: 1px solid #fff;
+    border: 1px solid black;
     width: 49px;
     height: calc(100% - 4px);
     position: absolute;
@@ -132,7 +132,6 @@ body {
   body .p2s-animation {
     animation-name: p2score;
     animation-duration: 0.26s; }
-
 
 /* Animation CSS */
 @keyframes slidedown {
