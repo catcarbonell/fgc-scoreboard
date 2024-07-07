@@ -70,7 +70,7 @@ body {
     position: absolute;
     left: 840px;
     top: 910px;
-    opacity: .7;
+    opacity: .45;
     display: none; }
   body #gameHold {
     display: none; }
@@ -133,6 +133,14 @@ body {
   body .p2s-animation {
     animation-name: p2score;
     animation-duration: 0.26s; }
+  
+	#logo{
+		position: absolute;
+		display: block;
+		left: 780px; 
+  	top: 800px;
+    opacity: 0.65;
+	}
 
 /* Animation CSS */
 @keyframes slidedown {
