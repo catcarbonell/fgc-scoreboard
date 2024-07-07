@@ -138,9 +138,6 @@ body {
     animation-name: p2score;
     animation-duration: 0.26s; 
   }
-  #p1Team {
-    margin-right: 70%;
-  }
   #p2Name {
     margin-left: 70%;
   }
