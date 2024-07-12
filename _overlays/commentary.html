@@ -124,31 +124,34 @@
 			}
 
 			function getText() {
-				var leftCommentatorName = scValues["cTitle1"];
-				var leftCommentatorHandle = scValues["mText1"];
-				var rightCommentatorName = scValues["cTitle2"];
-				var rightCommentatorHandle = scValues["mText2"];
+				var leftCommentatorName = scValues["leftComName"];
+				var leftCommentatorHandle = scValues["leftComHandle"];
+				var rightCommentatorName = scValues["rightComName"];
+				var rightCommentatorHandle = scValues["rightComHandle"];
 				
-				if ($("#leftCommentatorName").text() != leftCommentatorName || $("#rightCommentatorName").text() != rightCommentaryName || $("#leftCommentatorHandle").text() != leftCommentatorHandlee || $("#rightCommentaryHanlde").text() != rightCommentatorHandle) {
-					if (fresh) {
-						$("#leftCommentatorName").html(leftCommentatorName);
-						$("#leftCommentatorHandle").html(leftCommentatorHandle);
-						$("#rightCommentatorName").html(rightCommentatorName);
-						$("#rightCommentatorHandle").html(rightCommentatorHandle);
-						$(".text").transition({opacity: '1'}, 1000);
-						resize();
-						fresh = false;
-					} else {
-						$(".text").transition({opacity: '0'}, 1000, function() {
-							$("#leftCommentatorname").html(leftCommentatorName);
-							$("#leftCommentatorHandle").html(leftCommentatorHandle);
-							$("#rightCommentatorName").html(rightCommentatorName);
-							$("#rightCommentatorHandle").html(rightCommentatorHandle);
-							$(".text").transition({opacity: '1'}, 1000);
-							resize();
-						});
-					}
-				}
+				if ($("#leftCommentatorName").text() != leftCommentatorName || 
+						$("#rightCommentatorName").text() != rightCommentatorName || 
+						$("#leftCommentatorHandle").text() != leftCommentatorHandle || 
+						$("#rightCommentaryHanlde").text() != rightCommentatorHandle) {
+							if (fresh) {
+								$("#leftCommentatorName").html(leftCommentatorName);
+								$("#leftCommentatorHandle").html(leftCommentatorHandle);
+								$("#rightCommentatorName").html(rightCommentatorName);
+								$("#rightCommentatorHandle").html(rightCommentatorHandle);
+								$(".text").transition({opacity: '1'}, 1000);
+								resize();
+								fresh = false;
+							} else {
+								$(".text").transition({opacity: '0'}, 1000, function() {
+									$("#leftCommentatorname").html(leftCommentatorName);
+									$("#leftCommentatorHandle").html(leftCommentatorHandle);
+									$("#rightCommentatorName").html(rightCommentatorName);
+									$("#rightCommentatorHandle").html(rightCommentatorHandle);
+									$(".text").transition({opacity: '1'}, 1000);
+									resize();
+								});
+							}
+						}
 			}
 		</script>
 	</body>

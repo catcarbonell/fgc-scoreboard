@@ -6,7 +6,7 @@ function init(){
 	var streamJSON = '../sc/streamcontrol.json'; //specifies path for streamcontrol output json
 	var scObj; //variable to hold data extracted from parsed json
 	var startup = true; //flag for if looping functions are on their first pass or not
-	var animated = false; //flag for if scoreboard animation has run or not 
+	var animated = false; //flag for if scoreboard animation has run or not
 	var cBust = 0; //variable to hold cache busting value
 	var game; //variable to hold game value from streamcontrol dropdown
 	var p1Wrap = $('#p1Wrapper'); //variables to shortcut copypasting text resize functions
@@ -30,58 +30,20 @@ function init(){
 		if(xhr.readyState === 4){ //loads data from json into scObj variable each time that XMLHttpRequest ready state reports back as '4'(successful)
 			scObj = JSON.parse(xhr.responseText);
 			if(animated == true){
-				// updateCommentary();
 				scoreboard(); //runs scoreboard function each time readyState reports back as 4 as long as it has already run once and changed animated value to false
 			}
 		}
 	}
 
-	// Run Commentary Vid bg
+	// Run Scoreboard bg
 	sbVid();
-	// comVid();
 
-	// REG Scoreboard
+	// REG Scoreboard bg
 	function sbVid(){
 		$('#sbVid').attr('src','../webm/scoreboard.webm');
 		document.getElementById('sbVid').play()
 	}
-
-	// // Commentary
-
-	// function comVid(){
-	// 	$('#comVid').attr('src','../webm/middlelogo.webm');
-	// 	document.getElementById('comVid').play()
-	// }
-
-	// function updateCommentary() {
-	// 	var leftCommentatorName = scObj.cTitle1; // replace with the actual key from your JSON
-	// 	var leftCommentatorHandle = scObj.mText1; // replace with the actual key from your JSON
-	// 	var rightCommentatorName = scObj.cTitle2; // replace with the actual key from your JSON
-	// 	var rightCommentatorHandle = scObj.mText2; // replace with the actual key from your JSON
 	
-	// 	// Text for LEFT SIDE commentator
-	// 	if ($('#leftCommentatorName').text() != leftCommentatorName || $('#leftCommentatorHandle').text() != leftCommentatorHandle 
-	// 	|| $('#rightCommentatorName').text() != rightCommentatorName || $('#rightCommentatorHandle').text() != rightCommentatorHandle) {
-	// 		if (startup == true) {
-	// 			$("#leftCommentatorName").html(leftCommentatorName);
-	// 			$("#leftCommentatorHandle").html(leftCommentatorHandle);
-	// 			$("#rightCommentatorName").html(rightCommentatorName);
-	// 			$("#rightCommentatorHandle").html(rightCommentatorHandle);
-	// 			$(".text").transition({opacity: '1'}, 1000);
-	// 			resize();
-	// 		} else {
-	// 			$(".text").transition({opacity: '0'}, 1000, function() {
-	// 				$("#leftCommentatorname").html(leftCommentatorName);
-	// 				$("#leftCommentatorHandle").html(leftCommentatorHandle);
-	// 				$("#rightCommentatorName").html(rightCommentatorName);
-	// 				$("#rightCommentatorHandle").html(rightCommentatorHandle);
-	// 				$(".text").transition({opacity: '1'}, 1000);
-	// 				resize();
-	// 			});
-	// 		}
-	// 	}
-	// }
-	// Scoreboard
 	function scoreboard(){
 
 		if(startup == true){
@@ -139,11 +101,6 @@ function init(){
 		var p1Score = scObj['p1Score'];
 		var p2Score = scObj['p2Score'];
 		var round = scObj['round'];
-		var cTitle1 = scObj['cTitle1'];
-		var cTitle2 = scObj['cTitle2'];
-		var mText1 = scObj['mText1'];
-		var mText2 = scObj['mText2'];
-		
 
 		if(startup == true){
 
@@ -158,11 +115,6 @@ function init(){
 			$('#p1Score').html(p1Score);
 			$('#p2Score').html(p2Score);
 			$('#round').html(round);
-			$('#leftCommentatorName').html(cTitle1);
-			$('#leftCommentatorHandle').html(mText1);
-			$('#rightCommentatorName').html(cTitle2);
-			$('#rightCommentatorHandle').html(mText2);
-
 
 			p1Wrap.each(function(i, p1Wrap){ //function to resize font if text string is too long and causes div to overflow its width/height boundaries
 				while(p1Wrap.scrollWidth > p1Wrap.offsetWidth || p1Wrap.scrollHeight > p1Wrap.offsetHeight){
@@ -363,3 +315,5 @@ function init(){
 		}
 	}
 }
+
+

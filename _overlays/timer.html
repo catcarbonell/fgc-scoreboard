@@ -35,14 +35,16 @@
 	}
 	
 	#text {
+		color: white;
 		position: absolute;
 		display: block;
 		font-size: 68px;
 		line-height: 85px;
-		opacity: .1;
+		opacity: 1;
 	}
 	
 	#timer {
+		color: white;
 		position: absolute;
 		display: none;
 		font-size: 180px;
@@ -125,7 +127,7 @@
 	function getText() {
 		var cdMessage = scValues["cdMessage"];
 		
-		if ($("#text").text() != cdMessage){
+		if ($("#text").html() != cdMessage){
 			if (fresh == true){
 				$("#text").html(cdMessage);
 				$("#text").transition({opacity: '1'}, 1000);
