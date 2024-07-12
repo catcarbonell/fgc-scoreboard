@@ -52,7 +52,9 @@
  </tab>
 
  <tab name="Timer">
-    <label x="7" y="15" width="300" height="13">Timer Length</label>
-    <lineEdit id="timerLength" x="7" y="33" width="321" height="20" />
+    <label x="10" y="14" width="46" height="13">Commentator Name</label>
+    <label x="10" y="44" width="46" height="13">Commentator Handle</label>
+    <lineEdit id="cTitle1" x="60" y="10" width="321" height="20" />
+    <lineEdit id="mText1" x="60" y="40" width="321" height="20" />
  </tab>
 </layout>

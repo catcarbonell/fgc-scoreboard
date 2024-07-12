@@ -1,17 +1,18 @@
 {
-    "cTitle1": "dfdfd",
-    "cTitle2": "blooper",
+    "cTitle1": "aghksjdf",
     "game": "BBCF",
+    "leftComHandle": "",
+    "leftComName": "sdfsdf",
     "mText1": "@Sassassassin",
-    "mText2": "@blahrr",
-    "mText3": "",
-    "mText4": "",
     "p1Name": "jp",
     "p1Score": "0",
     "p1Team": "jp",
     "p2Name": "kit",
     "p2Score": "0",
     "p2Team": "WND",
+    "rightComHandle": "",
+    "rightComName": "",
     "round": "Top 8",
-    "timestamp": "1720316666"
+    "timerLength": "1000",
+    "timestamp": "1720752141"
 }
