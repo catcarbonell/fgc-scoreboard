@@ -1,35 +1,40 @@
 <!DOCTYPE StreamControlLayout>
 <layout width="600" height="500" tabbed="1">
  <tab name="Match Info">
-    <label x="10" y="14" width="46" height="13">Player 1</label>
-    <label x="10" y="44" width="46" height="13">Player 2</label>
-    <label x="10" y="74" width="46" height="13">Round</label>
-    <label x="10" y="104" width="46" height="13">Game</label>
-    <lineEdit id="p1Name" x="60" y="10" width="170" height="20" dataSet="players.csv" dataField="1" />
-    <lineEdit id="p1Team" x="240" y="10" width="60" height="20" dataSet="players.csv" dataField="2" master="p1Name" />
-    <spinBox id="p1Score" x="310" y="9" width="42" height="25" maximum="99" />
-    <lineEdit id="p2Name" x="60" y="40" width="170" height="20" dataSet="players.csv" dataField="1"  />
-    <lineEdit id="p2Team" x="240" y="40" width="60" height="20" dataSet="players.csv" dataField="2" master="p2Name" />
-    <spinBox id="p2Score" x="310" y="39" width="42" height="25" maximum="99" />
-    <lineEdit id="round" x="60" y="70" width="100" height="20" dataSet="round.csv" dataField="1"  />
-    <button type="swap" x="170" y="70" width="60" height="23" tooltip="Swap the Scores" id="swap1" swapSet1="p1Name,p1Team,p1Score" swapSet2="p2Name,p2Team,p2Score">Swap</button>
-    <button type="reset" x="240" y="70" width="60" height="23" tooltip="Reset the Scores" id="reset1" reset="p1Score,p2Score">Reset</button>
-    <button type="reset" x="310" y="70" width="60" height="23" tooltip="Clear Match Info" id="reset2" reset="p1Name,p1Team,p1Score,p2Name,p2Team,p2Score">Clear</button>
-    <comboBox id="game" editable="1" x="60" y="100" width="100" height="20">
-    <comboItem>BBCF</comboItem>
-    <comboItem>BBTAG</comboItem>
-    <comboItem>DBFZ</comboItem>
-    <comboItem>GGXRD</comboItem>
-    <comboItem>KOFXIV</comboItem>
-    <comboItem>MVCI</comboItem>
-    <comboItem>SFVCE</comboItem>
-    <comboItem>TEKKEN7</comboItem>
-    <comboItem>UMVC3</comboItem>
-    <comboItem>UNICLR</comboItem>
-    <comboItem>USF4</comboItem>
+  <label x="10" y="14" width="46" height="13">Player 1</label>
+  <label x="10" y="44" width="46" height="13">Player 2</label>
+  <label x="10" y="74" width="46" height="13">Round</label>
+  <label x="10" y="104" width="46" height="13">Game</label>
+  <lineEdit id="p1Name" x="60" y="10" width="170" height="20" dataSet="players.csv" dataField="1" />
+  <lineEdit id="p1Team" x="240" y="10" width="60" height="20" dataSet="players.csv" dataField="2" master="p1Name" />
+  <spinBox id="p1Score" x="310" y="9" width="42" height="25" maximum="99" />
+  <lineEdit id="p2Name" x="60" y="40" width="170" height="20" dataSet="players.csv" dataField="1"  />
+  <lineEdit id="p2Team" x="240" y="40" width="60" height="20" dataSet="players.csv" dataField="2" master="p2Name" />
+  <spinBox id="p2Score" x="310" y="39" width="42" height="25" maximum="99" />
+  <lineEdit id="round" x="60" y="70" width="100" height="20" dataSet="round.csv" dataField="1"  />
+  <button type="swap" x="170" y="70" width="60" height="23" tooltip="Swap the Scores" id="swap1" swapSet1="p1Name,p1Team,p1Score" swapSet2="p2Name,p2Team,p2Score">Swap</button>
+  <button type="reset" x="240" y="70" width="60" height="23" tooltip="Reset the Scores" id="reset1" reset="p1Score,p2Score">Reset</button>
+  <button type="reset" x="310" y="70" width="60" height="23" tooltip="Clear Match Info" id="reset2" reset="p1Name,p1Team,p1Score,p2Name,p2Team,p2Score">Clear</button>
+  <comboBox id="game" editable="1" x="60" y="100" width="100" height="20">
+   <comboItem>SF6</comboItem>
   </comboBox>
  </tab>
- <tab name="LWR3RD">
+
+<tab name="Count Down">
+  <label x="10" y="44" width="46" height="20">Message</label>
+  <lineEdit id="cdMessage" x="66" y ="44" width="256" height="20"/>
+  <label x="10" y="74" width="46" height="20">Timer</label>
+  <comboBox id="timerLength" x="66" y="74" width="256" height="20" editable="1">
+    <comboItem>1:00</comboItem>
+    <comboItem selected="1">3:00</comboItem>
+    <comboItem>5:00</comboItem>
+    <comboItem>10:00</comboItem>
+    <comboItem>15:00</comboItem>
+  </comboBox>
+  <button type="timestamp" id="timerStart" x="10" y="104" width="80" height="20" saveonclick="1">Start Timer</button>
+  <checkBox x="110" y="104" id="showTimer" width="80" height="20">Show Timer</checkBox>
+ </tab>
+ <tab name="Lower Third">
     <label x="7" y="15" width="300" height="13">Commentator Name</label>
     <lineEdit id="cTitle1" x="7" y="33" width="321" height="20" />
     
@@ -39,20 +44,15 @@
 
  <tab name="Commentary">
     <label x="7" y="15" width="300" height="13">Left Commentator Name</label>
-    <lineEdit id="leftComName" x="7" y="33" width="321" height="20" />
+    <lineEdit id="leftComName" x="7" y="33" width="150" height="20" />
     
     <label x="7" y="70" width="300" height="13">Left Commentator Handle</label>
-    <lineEdit id="leftComHandle" x="7" y="90" width="321" height="20" />
+    <lineEdit id="leftComHandle" x="7" y="90" width="150" height="20" />
 
-    <label  x="7" y="125" width="300" height="13">Right Commentator Name</label>
-    <lineEdit id="rightComName" x="7" y="145" width="321" height="20" />
+    <label  x="190" y="15" width="300" height="13">Right Commentator Name</label>
+    <lineEdit id="rightComName" x="190" y="33" width="150" height="20" />
 
-    <label x="7" y="180" width="300" height="13">Right Commentator Handle</label>
-    <lineEdit id="rightComHandle" x="7" y="200" width="321" height="20" />
- </tab>
-
- <tab name="Timer">
-    <label x="7" y="15" width="300" height="13">Timer Length</label>
-    <lineEdit id="timerLength" x="7" y="33" width="321" height="20" />
+    <label x="190" y="70" width="300" height="13">Right Commentator Handle</label>
+    <lineEdit id="rightComHandle" x="190" y="90" width="150" height="20" />
  </tab>
 </layout>
