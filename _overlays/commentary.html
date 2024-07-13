@@ -2,6 +2,8 @@
 	<head>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.transit.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 		
 <style text="text/CSS">
 
@@ -89,6 +91,7 @@
 				<br />
 				<span id="rightCommentatorHandle" class="text"></span>
 			</div>
+
 		</div> 
 		
 		<script type="text/javascript">
@@ -96,7 +99,6 @@
 			var xhttp = new XMLHttpRequest(); // AJAX data request sent to server (in this case server being local JSON file)
 			var fresh = true; // Flag for if looping functions are on their first pass or not
 			var scValues; // Stream control values
-			var comNamesWrap = $('#text');
 
 			xhttp.overrideMimeType('application/json'); // Explicitly declares that JSON should always be processed as a JSON file type
 			xhttp.onreadystatechange = parseJSON; // Runs parseJSON function every time XMLHttpRequest ready state changes
@@ -104,7 +106,7 @@
 			
 			comVid();
 			scUpdate();
-			setInterval(function() { scUpdate(); }, 500);
+			setInterval(function() { scUpdate(); }, 300);
 			
 			function scUpdate() {
 				xhttp.open('GET', streamJSON, true); // String query-style cache busting, forces non-cached new version of JSON to be opened each time
@@ -132,26 +134,47 @@
 				if ($("#leftCommentatorName").text() != leftCommentatorName || 
 						$("#rightCommentatorName").text() != rightCommentatorName || 
 						$("#leftCommentatorHandle").text() != leftCommentatorHandle || 
-						$("#rightCommentaryHanlde").text() != rightCommentatorHandle) {
+						$("#rightCommentatorHandle").text() != rightCommentatorHandle) {
 							if (fresh) {
 								$("#leftCommentatorName").html(leftCommentatorName);
 								$("#leftCommentatorHandle").html(leftCommentatorHandle);
 								$("#rightCommentatorName").html(rightCommentatorName);
 								$("#rightCommentatorHandle").html(rightCommentatorHandle);
-								$(".text").transition({opacity: '1'}, 1000);
-								resize();
+
+								gsap.fromTo(
+									"#leftCommentary", 
+									{ autoAlpha: 0, x: 200 },
+									{ autoAlpha: 1, x: 35, duration: 1 }
+								);
+								gsap.fromTo(
+									"#rightCommentary", 
+									{ autoAlpha: 0, x: -200 },
+									{ autoAlpha: 1, x: 0, duration: 1 }
+								);
+
 								fresh = false;
-							} else {
-								$(".text").transition({opacity: '0'}, 1000, function() {
+								resize();
+
+							} 
+							else {
 									$("#leftCommentatorname").html(leftCommentatorName);
 									$("#leftCommentatorHandle").html(leftCommentatorHandle);
 									$("#rightCommentatorName").html(rightCommentatorName);
 									$("#rightCommentatorHandle").html(rightCommentatorHandle);
-									$(".text").transition({opacity: '1'}, 1000);
+
+									gsap.fromTo(
+										"#leftCommentary", 
+										{ autoAlpha: 0, x: 200 },
+										{ autoAlpha: 1, x: 35, duration: 1 }
+									);
+									gsap.fromTo(
+										"#rightcommentary", 
+										{ autoAlpha: 0, x: -200 },
+										{ autoAlpha: 1, x: 0, duration: 1 }
+									);
 									resize();
-								});
-							}
-						}
+							};
+					}
 			}
 		</script>
 	</body>

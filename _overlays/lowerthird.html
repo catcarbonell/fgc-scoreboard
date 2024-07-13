@@ -2,7 +2,7 @@
 	<head>
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
-		
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <style text="text/CSS">
 
 	@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
@@ -82,7 +82,7 @@
 			
 			lowerThirdVid();
 			scUpdate();
-			setInterval(function() { scUpdate(); }, 500);
+			setInterval(function() { scUpdate(); }, 300);
 			
 			function scUpdate() {
 				xhttp.open('GET', streamJSON, true); // String query-style cache busting, forces non-cached new version of JSON to be opened each time
@@ -109,16 +109,25 @@
 					if (fresh) {
 						$("#commentatorName").html(commentatorName);
 						$("#commentatorHandle").html(commentatorHandle);
-						$(".text").transition({opacity: '1'}, 1000);
+						gsap.fromTo(
+							"#commentary", 
+							{ autoAlpha: 0, x: 200 },
+  						{ autoAlpha: 1, x: 0, duration: 1 }
+							);
+					
 						resize();
 						fresh = false;
+						
 					} else {
-						$(".text").transition({opacity: '0'}, 1000, function() {
 							$("#commentatorName").html(commentatorName);
 							$("#commentatorHandle").html(commentatorHandle);
-							$(".text").transition({opacity: '1'}, 1000);
+
+							gsap.fromTo(
+							"#commentary", 
+							{ autoAlpha: 0, x: 200 },
+  						{ autoAlpha: 1, x: 0, duration: 1 }
+							);
 							resize();
-						});
 					}
 				}
 			}

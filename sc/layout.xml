@@ -34,6 +34,7 @@
   <button type="timestamp" id="timerStart" x="10" y="104" width="80" height="20" saveonclick="1">Start Timer</button>
   <checkBox x="110" y="104" id="showTimer" width="80" height="20">Show Timer</checkBox>
  </tab>
+ 
  <tab name="Lower Third">
     <label x="7" y="15" width="300" height="13">Commentator Name</label>
     <lineEdit id="cTitle1" x="7" y="33" width="321" height="20" />
