@@ -37,11 +37,11 @@ body {
     body .wrappers .teams {
       color: #B9FF66; }
   body #p1Wrapper {
-    left: 300px;
+    left: 320px;
     text-align: left;
   }
   body #p2Wrapper {
-    left: 1250px;
+    left: 1230px;
     text-align: right;
   }
   body .scores {
@@ -52,6 +52,7 @@ body {
     text-align: center;
     top: 38px;
     -webkit-text-stroke: 1px black;
+    border: 1px solid white;
     font-size: 34px;
     opacity: 0; }
   body #p1Score {
@@ -142,7 +143,7 @@ body {
 	#logo{
 		position: absolute;
 		display: block;
-		left: 780px; 
+		left: 810px; 
   	top: 800px;
     opacity: 0.65;
 	}
