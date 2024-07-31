@@ -50,7 +50,7 @@ function init(){
 			game = scObj['game'];
 			$('#gameHold').html(game); //sets 'game' value into placeholder div
 
-			if(game == 'BBTAG' || game == 'SFVCE' || game == 'TEKKEN7' || game == 'UNICLR'){
+			if( game == "TEKKEN8" ||game == 'BBTAG' || game == 'SFVCE' || game == 'TEKKEN7' || game == 'UNICLR'){
 				// Shifts the scoreboard BG wrappers down to match HP bars
 				offset = document.getElementById("leftBGWrapper").offsetTop;
 				TweenMax.fromTo('#leftBGWrapper', 0.5, {css:{y: offset}}, {css:{y: adjust1}})
@@ -224,25 +224,11 @@ function init(){
 						TweenMax.set('#leftWrapper',{css:{y: '4px'}});
 						TweenMax.set('#rightWrapper',{css:{y: '4px'}});
 					}
-					else if(game == 'BBCF' || game == 'DBFZ' || game == 'GGXRD' || game == 'KOFXIV' || game == 'MVCI' || game == 'UMVC3'){
+					else if(game === 'TEKKEN8'){
 						TweenMax.set('#leftBGWrapper',{css:{y: '+0px'}});
 						TweenMax.set('#rightBGWrapper',{css:{y: '+0px'}});
 						TweenMax.set('#leftWrapper',{css:{y: adjust2}});
 						TweenMax.set('#rightWrapper',{css:{y: adjust2}});
-					}
-					else if(game == 'USF4'){
-						TweenMax.set('#leftWrapper',{css:{y: adjust3}});
-						TweenMax.set('#rightWrapper',{css:{y: adjust3}});
-					}
-					else{
-						TweenMax.set('#leftWrapper',{css:{y: adjust2}});
-						TweenMax.set('#rightWrapper',{css:{y: adjust2}});
-					}
-					if(game == 'BBTAG' || game == 'UNICLR'){
-						var adjustLgW = parseFloat(adjustLg[3]) * adjustLg[2]; //var changed so that it bases resized on original logo size rather than current value
-						var adjustLgH = parseFloat(adjustLg[4]) * adjustLg[2]; //uses variables stored in the 'adjustLg' array in scoreboard.html
-						TweenMax.set('.logos',{css:{x: adjustLg[0], y: adjustLg[1], width: adjustLgW, height: adjustLgH}});
-						TweenMax.set('.logos',{css:{x: adjustLg[0], y: adjustLg[1]}});
 					}
 					else{
 						TweenMax.set('.logos',{css:{x: '+0px', y: '+0px', width: adjustLg[3], height: adjustLg[4]}}); //also return logos to original positioning and size
@@ -293,11 +279,11 @@ function init(){
 		var itemCount = $('#logoWrapper').children().length; //number of logo <img> objects located within logoWrapper container
 
 		if(itemCount > 1){
-			$('#logoWrapper').find('img').eq(currentItem).fadeIn(initialTime);
+			$('#logo').find('img').eq(currentItem).fadeIn(initialTime);
 
 			setInterval(function(){
 
-				$('#logoWrapper').find('img').eq(currentItem).fadeOut(fadeTime);
+				$('#logo').find('img').eq(currentItem).fadeOut(fadeTime);
 
 				if(currentItem == itemCount - 1){
 					currentItem = 0;
@@ -306,7 +292,7 @@ function init(){
 					currentItem++;
 				}
 
-				$('#logoWrapper').find('img').eq(currentItem).fadeIn(fadeTime);
+				$('#logo').find('img').eq(currentItem).fadeIn(fadeTime);
 
 			},intervalTime);
 		}
