@@ -76,11 +76,6 @@ function init(){
 				TweenMax.set('#leftWrapper',{css:{y: adjust2}}); //if 'game' value is anything other than specified above it defaults to 2nd webm/placement
 				TweenMax.set('#rightWrapper',{css:{y: adjust2}});
 			}
-			if(game == 'BBTAG' || game == 'UNICLR'){
-				var adjustLgW = parseFloat($('.logos').css('width')) * adjustLg[2]; //shrinks logo sizes based on scaling variable set in scoreboard.html
-				var adjustLgH = parseFloat($('.logos').css('height')) * adjustLg[2];
-				TweenMax.set('.logos',{css:{x: adjustLg[0], y: adjustLg[1], width: adjustLgW, height: adjustLgH}});
-			}
 
 			getData(); //runs function that sets data polled from json into html objects
 			setTimeout(logoLoop,logoTime); //sets logoLoop function out in time specified in logoTime variable in scoreboard.html
