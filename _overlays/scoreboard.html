@@ -3,7 +3,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		<script src="js/scoreboard.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/greensock-js/src/minified/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 	</head>
 	<body>
 
@@ -69,6 +69,13 @@
 			var adjust3 = '+28px'; //distance on y-axis that scoreboards move when adjusting for 3rd webm
 			var adjustLg = ['+890px','+30px',.8,'240px','140px']; //array of [distance to move logos on x-axis, "" on y-axis, scaling factor to shrink logos by, original logo width, original logo height]
 			
+			function logoFadeIn(){ 
+				gsap.fromTo("#logo", 
+    			{ opacity: 0 },  // Starting state
+    			{ opacity: 1, duration: 2 }  // Ending state with animation duration
+  			);
+			}
+			logoFadeIn();
 		</script>
 	</body>
 

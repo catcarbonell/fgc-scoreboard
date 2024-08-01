@@ -35,8 +35,10 @@ function init(){
 		}
 	}
 
+
 	// Run Scoreboard bg
 	sbVid();
+
 
 	// REG Scoreboard bg
 	function sbVid(){
