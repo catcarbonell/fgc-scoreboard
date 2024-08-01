@@ -105,9 +105,10 @@
 			xhttp.onreadystatechange = parseJSON; // Runs parseJSON function every time XMLHttpRequest ready state changes
 
 			
-			comVid();
 			scUpdate();
 			setInterval(function() { scUpdate(); }, 300);
+			comVid();
+
 			
 			function scUpdate() {
 				xhttp.open('GET', streamJSON, true); // String query-style cache busting, forces non-cached new version of JSON to be opened each time
@@ -141,18 +142,38 @@
 								$("#leftCommentatorHandle").html(leftCommentatorHandle);
 								$("#rightCommentatorName").html(rightCommentatorName);
 								$("#rightCommentatorHandle").html(rightCommentatorHandle);
+								
+								var leftTextLength = $("#leftCommentatorName").text().length;
+								var rightTextLength = $("#rightCommentatorName").text().length;
 
-								gsap.fromTo(
-									"#leftCommentary", 
-									{ autoAlpha: 0, x: 200 },
-									{ autoAlpha: 1, x: 35, duration: 1 }
-								);
-								gsap.fromTo(
-									"#rightCommentary", 
-									{ autoAlpha: 0, x: -200 },
-									{ autoAlpha: 1, x: 0, duration: 1 }
-								);
+								if ( leftTextLength >= 9){
+									gsap.fromTo(
+										"#leftCommentary", 
+										{ autoAlpha: 0, x: 200 },
+										{ autoAlpha: 1, x: -75, duration: 1 }
+									);
+								} else {
+									gsap.fromTo(
+										"#leftCommentary", 
+										{ autoAlpha: 0, x: 200 },
+										{ autoAlpha: 1, x: 35, duration: 1 }
+									);
+								}
 
+								if ( rightTextLength >= 9){
+									gsap.fromTo(
+										"#rightCommentary", 
+										{ autoAlpha: 0, x: -200 },
+										{ autoAlpha: 1, x: -40, duration: 1 }
+									);
+								} else {
+									gsap.fromTo(
+										"#rightCommentary", 
+										{ autoAlpha: 0, x: -200 },
+										{ autoAlpha: 1, x: 0, duration: 1 }
+									);
+								}
+								
 								fresh = false;
 								resize();
 
