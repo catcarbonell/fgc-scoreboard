@@ -160,13 +160,19 @@
 									);
 								}
 
-								if ( rightTextLength >= 9){
+								if ( rightTextLength >= 9 && rightTextLength < 15){
 									gsap.fromTo(
 										"#rightCommentary", 
 										{ autoAlpha: 0, x: -200 },
 										{ autoAlpha: 1, x: -40, duration: 1 }
 									);
-								} else {
+								} else if( rightTextLength >= 15 ){
+									gsap.fromTo(
+										"#rightCommentary", 
+										{ autoAlpha: 0, x: -200 },
+										{ autoAlpha: 1, x: -120, duration: 1 }
+									);
+								}else {
 									gsap.fromTo(
 										"#rightCommentary", 
 										{ autoAlpha: 0, x: -200 },
