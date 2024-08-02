@@ -1,99 +1,94 @@
-<html>
-	<head>
-		<link rel="stylesheet" href="css/style.css">
-		<script src="js/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/jquery.transit.js" type="text/javascript" charset="utf-8"></script>
-		<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-		
-		<style text="text/CSS">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamControl Integration</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+        body {
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            text-transform: uppercase;
+            color: white;
+            text-shadow: 2px 2px 3px #000;
+            font-family: "Bebas Neue", sans-serif;
+        }
 
-			@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-			@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+        #commentary {
+            position: absolute;
+            left: 220px;
+            top: 930px;
+            width: calc(100% - 440px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 1px;
+        }
 
-			body {
-				width: 1920px;
-				height: 1080px;
-				overflow: hidden;
-				background: transparent;
-				padding: 0;
-				margin: 0;
-				text-transform: uppercase;
-				color: white;
-				text-shadow: 2px 2px 3px #000;
-				font-family: "Bebas Neue", sans-serif;
-			}
+        #leftCommentary, #rightCommentary {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 10px;
+        }
 
-			/* Commentary CSS */
-			#commentary {
-				position: absolute;
-				left: 250px;
-				top: 940px;
-				width: calc(100% - 440px); /* Adjusted width to avoid overflow */
-				display: flex;
-				justify-content: space-between;
-				z-index: 100;
-				color: #fff;
-				text-align: center;
-				letter-spacing: 1px;
-			}
+        #leftCommentatorName, #rightCommentatorName {
+            color: #fff;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 0.5;
+        }
 
-			#leftCommentary, #rightCommentary {
-				flex: 1; /* Allow elements to take equal space */
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				max-width: 50%; /* Limit width to half of the parent */
-			}
+        #leftCommentatorHandle, #rightCommentatorHandle {
+            color: #fff;
+            text-shadow: 2px 2px 1px #000;
+            font-family: "Kode Mono", monospace;
+            font-size: 20px;
+            font-weight: 300;
+        }
 
-			#leftCommentatorName, #rightCommentatorName {
-				color: #fff;
-				font-size: 28px;
-				font-weight: 700;
-				line-height: 0;
-			}
+        #comBg {
+            position: absolute;
+            display: block;
+            left: 220px;
+            top: 800px;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="comBg">
+        <video id="comVid" class="LT" type="video/webm" width="1500" height="300"></video>
+    </div>
+    <div id="commentary">
+        <!-- Left Commentary-->
+        <div id="leftCommentary">
+            <span id="leftCommentatorName" class="text"></span>
+            <br />
+            <span id="leftCommentatorHandle" class="text"></span>
+        </div>
+        <!-- Right Commentary-->
+        <div id="rightCommentary">
+            <span id="rightCommentatorName" class="text"></span>
+            <br />
+            <span id="rightCommentatorHandle" class="text"></span>
+        </div>
+    </div>
 
-			#leftCommentatorHandle, #rightCommentatorHandle {
-				color: #fff;
-				text-shadow: 2px 2px 1px #000;
-				font-family: "Kode Mono", monospace;
-				font-size: 20px;
-				font-weight: 300;
-				line-height: 10px;
-			}
-
-			#comBg {
-				position: absolute;
-				display: block;
-				left: 220px;
-				top: 800px;
-				z-index: -1;
-			}
-		</style>
-
-	</head>
-	<body>
-		<div id="comBg">
-			<video id="comVid" class="LT" type="video/webm" width="1500" height="300"></video>
-		</div>
-		<div id="commentary">
-			<!-- Left Commentary-->
-			<div id="leftCommentary">
-				<span id="leftCommentatorName" class="text"></span>
-				<br />
-				<span id="leftCommentatorHandle" class="text"></span> <!-- team/name spans nested within wrapper span to allow them to align the same without overlapping each other -->
-			</div>
-
-			<!-- Right Commentary-->
-			<div id="rightCommentary">
-				<span id="rightCommentatorName" class="text"></span>
-				<br />
-				<span id="rightCommentatorHandle" class="text"></span>
-			</div>
-
-		</div> 
-		
-		<script type="text/javascript">
-			  var streamJSON = '../sc/streamcontrol.json'; // Specifies path for streamcontrol output JSON
+    <script>
+      var streamJSON = '../sc/streamcontrol.json'; // Specifies path for streamcontrol output JSON
 var xhttp = new XMLHttpRequest(); // AJAX data request sent to server (in this case server being local JSON file)
 var previousValues = {
     leftCommentatorName: '',
@@ -148,8 +143,8 @@ function getText() {
         var leftNameLength = leftCommentatorName.length;
         var rightNameLength = rightCommentatorName.length;
 
-        var leftX = leftNameLength >= 9 ? '13%' : '10%';
-        var rightX = rightNameLength >= 9 ? (rightNameLength >= 15 ? '-15%' : '-15%') : '-15%';
+        var leftX = leftNameLength >= 9 ? '13%' : '15%';
+        var rightX = rightNameLength >= 9 ? (rightNameLength >= 15 ? '-10%' : '-5%') : '-10%';
 
         // Reset positions before updating text content
         gsap.set("#leftCommentary", { x: 200, autoAlpha: 0 });
@@ -174,7 +169,6 @@ $(document).ready(function() {
 });
 
 
-		</script>
-	</body>
-
+    </script>
+</body>
 </html>
